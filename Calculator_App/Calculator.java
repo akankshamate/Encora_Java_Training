@@ -1,61 +1,45 @@
-import java.util.Scanner;
 
 public class Calculator {
+
+
     public static void main(String[] args) {
-        Double a, b, result;
-        String operator;
+        String s = null;
+        do {
+            Input ip = new Input();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter First number:");
-        a = sc.nextDouble();
+            System.out.print("Enter First number:");
+            int a = ip.readValue();
 
-        System.out.print("Enter Second number:");
-        b = sc.nextDouble();
+            System.out.print("Enter Second number:");
+            int b = ip.readValue();
 
-        System.out.print("Select the operator: +,-,*,/,Sq,cube:");
-        operator = sc.next();
+            int ch = ip.readChoiceValue();
 
+            Operations op = new Operations();
 
-        Operations op = new Operations();
+            switch (ch) {
+                case 1 -> op.add(a, b);
+                case 2 -> op.sub(a, b);
+                case 3 -> op.mul(a, b);
+                case 4 -> {
+                    if (b != 0) {
+                        op.div(a, b);
 
-        switch (operator) {
-            case "+":
-                result = op.add(a, b);
-                System.out.print("Addition of " + a + " and " + b + " is " + result);
-
-                break;
-            case "-":
-                result = op.sub(a, b);
-                System.out.println("Subtraction of " + a + " and " + b + " is " + result);
-
-                break;
-            case "*":
-                result = op.mul(a, b);
-                System.out.println("Multiplication of " + a + " and " + b + " is " + result);
-                break;
-            case "/":
-                if (b != 0) {
-                    result = op.div(a, b);
-                    System.out.println("Division of " + a + " and " + b + " is " + result);
-                } else {
-                    System.out.println("A number Can not divide by 0");
+                    } else {
+                        System.out.println("A number Can not divide by 0");
+                    }
                 }
-                break;
-            case "sq":
-                result = op.square(a);
-                System.out.println("Square of " + a + " is " + result);
-                result= op.square(b);
-                System.out.println("Square of " + b + " is " + result);
-                break;
-            case "cube":
-                result = op.cube(a);
-                System.out.println("Cube of " + a + " is " + result);
-                result = op.cube(b);
-                System.out.println("Cube of " + b + " is " + result);
-                break;
-            default:
-                break;
-
-        }
+                case 5 -> {
+                    op.square(a);
+                    op.square(b);
+                }
+                case 6 -> {
+                    op.cube(a);
+                    op.cube(b);
+                }
+            }
+            System.out.print("Do you want to continue press Y/N:");
+            s = ip.readStringValue();
+        } while (s.equalsIgnoreCase("Y"));
     }
 }

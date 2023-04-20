@@ -1,25 +1,32 @@
 public class Operations {
-    public double add(double a, double b) {
-        return a + b;
+    int result;
+    public void add(int a, int b) {
+        result=a+b;
+        System.out.println("Addition of " + a + " and " + b + " is " + result);
     }
 
-    public double sub(double a, double b) {
-        return a - b;
+    public void sub(int a, int b) {
+        result=a-b;
+        System.out.println("Subtraction of " + a + " and " + b + " is " + result);
     }
 
-    public double mul(double a, double b) {
-        return a * b;
+    public void mul(int a, int b) {
+        result=a*b;
+        System.out.println("Multiplication of " + a + " and " + b + " is " + result);
     }
 
-    public double div(double a, double b) {
-        return a / b;
+    public void div(int a, int b) {
+        result=a/b;
+        System.out.println("Division of " + a + " and " + b + " is " + result);
     }
 
-    public double square(double a) {
-        return (a * a);
+    public void square(int a) {
+        result=a*a;
+        System.out.println("Square of " + a + " is " + result);
     }
 
-    public double cube(double a) {
-        return (a * a * a);
+    public void cube(int a) {
+        result=a*a*a;
+        System.out.println("Cube of " + a + " is " + result);
     }
 }
